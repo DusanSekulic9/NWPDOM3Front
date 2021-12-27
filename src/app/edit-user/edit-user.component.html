@@ -1,0 +1,65 @@
+<div class="container">
+  <form [formGroup]="userGroup">
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Email</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputEmail3" placeholder="Email" [formControlName]="'username'">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Password</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" id="inputPassword3" placeholder="Password" [formControlName]="'password'">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputEmail3" class="col-sm-2 col-form-label">Name</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputName" placeholder="Email" [formControlName]="'name'">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="inputPassword3" class="col-sm-2 col-form-label">Surname</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" id="inputSurname" placeholder="Password" [formControlName]="'surname'">
+      </div>
+    </div>
+
+    <div class="form-group row">
+      <div class="col-sm-2">Permissions</div>
+      <div class="col-sm-10">
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck1" [formControlName]="'create'">
+          <label class="form-check-label" for="gridCheck1">
+            Create
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck2" [formControlName]="'read'">
+          <label class="form-check-label" for="gridCheck2">
+            Read
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck3" [formControlName]="'update'">
+          <label class="form-check-label" for="gridCheck3">
+            Update
+          </label>
+        </div>
+        <div class="form-check">
+          <input class="form-check-input" type="checkbox" id="gridCheck4" [formControlName]="'delete'">
+          <label class="form-check-label" for="gridCheck4">
+            Delete
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="col-sm-10">
+        <button type="submit" class="btn btn-primary" (click)="update()">Update</button>
+        <button type="submit" class="btn btn-danger m-3" (click)="back()">Back</button>
+      </div>
+    </div>
+  </form>
+</div>
+

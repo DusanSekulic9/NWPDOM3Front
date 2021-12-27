@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+@import "~bootstrap/dist/css/bootstrap.css";
+
+
+.center {
+  position: absolute;
+  left: 50%;
+  top: 30%;
+  width: 50%;
+  border: 1px solid lightblue;
+  padding: 10px;
+  -webkit-transform: translate(-50%, -50%);
+  transform: translate(-50%, -50%);
+}
+
+

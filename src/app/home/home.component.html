@@ -1,0 +1,60 @@
+<div class="container">
+  <table *ngIf="loggedInUser.can_read_users" class="table">
+    <thead>
+    <tr>
+      <th scope="col">Email</th>
+      <th scope="col">Name</th>
+      <th scope="col">Surname</th>
+      <th scope="col">Create</th>
+      <th scope="col">Read</th>
+      <th scope="col">Update</th>
+      <th scope="col">Delete</th>
+      <th *ngIf="loggedInUser.can_delete_users" scope="col">Action</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let user of users;">
+      <td style="cursor: grab" *ngIf="loggedInUser.can_update_users; else nonClickable" (click)="updateUser(user)">
+        {{user.email}}
+      </td>
+      <ng-template #nonClickable>
+        <td>
+          {{user.email}}
+        </td>
+      </ng-template>
+      <td>
+        {{user.name}}
+      </td>
+      <td>
+        {{user.surname}}
+      </td>
+      <td>
+        {{user.can_create_users}}
+      </td>
+      <td>
+        {{user.can_read_users}}
+      </td>
+
+      <td>
+        {{user.can_update_users}}
+      </td>
+
+      <td>
+        {{user.can_delete_users}}
+      </td>
+
+      <td *ngIf="loggedInUser.can_delete_users">
+        <button class="btn btn-outline-danger" (click)="delete(user.id)">Delete</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-2"></div>
+    <button *ngIf="loggedInUser.can_create_users" class="btn btn-primary btn-lg col-2" (click)="createUser()">Add new user</button>
+    <div class="col-4"></div>
+    <button class="col-2 btn btn-danger btn-lg" (click)="logout()">Log Out</button>
+    <div class="col-2"></div>
+  </div>
+
+</div>
