@@ -4,6 +4,8 @@ import {environment} from "../environments/environment";
 import {Observable} from "rxjs";
 import {User} from "./models/User";
 import {Machine} from "./models/Machine";
+import {Error} from "./models/Error";
+
 
 @Injectable({
   providedIn: 'root'
@@ -38,6 +40,7 @@ export class BackendService {
     return this.http.put<User>(this.api, {
       username: username,
       name: name,
+      password: 'dummy',
       surname: surname,
       can_create_users: create,
       can_read_users: read,
@@ -113,6 +116,18 @@ export class BackendService {
       id: id,
       version: version
     })
+  }
+
+  errors(){
+    return this.http.get<Error[]>(this.api + '/machines/errors');
+  }
+
+  schedule(id: number, operation: string, date: string): Observable<any>{
+    return this.http.post<any>(this.api + '/machines/reserve', {
+      id: id,
+      name: operation,
+      date: date
+    }, {observe: 'response' as 'response'})
   }
 
 }

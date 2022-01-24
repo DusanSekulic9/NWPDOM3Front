@@ -65,6 +65,8 @@ export class EditUserComponent implements OnInit {
     this.http.update(username, name, surname, create,read,update,del, create_m, destroy_m,search_m,start_m,restart_m,stop_m).subscribe((response) =>{
       localStorage.removeItem('editUser');
       this.router.navigate(['/home'])
+    }, error => {
+      alert(error.error)
     })
   }
 

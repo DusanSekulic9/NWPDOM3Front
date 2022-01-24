@@ -52,6 +52,8 @@ export class UserComponent implements OnInit {
     let stop_m = this.userGroup.get('stop_m')?.value;
     this.http.create(username, password, name, surname, create,read,update,del, create_m, destroy_m,search_m,start_m,restart_m,stop_m).subscribe((response) =>{
       this.router.navigate(['/home'])
+    }, error => {
+      alert(error.error)
     })
   }
 

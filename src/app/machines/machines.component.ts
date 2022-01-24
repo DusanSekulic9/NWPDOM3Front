@@ -48,6 +48,7 @@ export class MachinesComponent implements OnInit {
   }
 
   start(machine: Machine){
+    let oldStatus = machine.status;
     machine.status = "WORKING...";
     this.backend.start(machine.id, machine.version).subscribe((response) => {
       for(let i = 0; i < this.machines.length; i++){
@@ -58,6 +59,7 @@ export class MachinesComponent implements OnInit {
         }
       }
     }, error => {
+      machine.status = oldStatus;
       alert(error.error);
     })
   }
@@ -74,6 +76,7 @@ export class MachinesComponent implements OnInit {
 
 
   restart(machine: Machine){
+    let oldStatus = machine.status;
     machine.status = "WORKING...";
     this.backend.restart(machine.id, machine.version).subscribe((response) => {
       for(let i = 0; i < this.machines.length; i++){
@@ -84,12 +87,14 @@ export class MachinesComponent implements OnInit {
         }
       }
     }, error => {
+      machine.status = oldStatus;
       alert(error.error);
     })
   }
 
 
   stop(machine: Machine){
+    let oldStatus = machine.status;
     machine.status = "WORKING...";
     this.backend.stop(machine.id, machine.version).subscribe((response) => {
       for(let i = 0; i < this.machines.length; i++){
@@ -100,6 +105,7 @@ export class MachinesComponent implements OnInit {
         }
       }
     }, error => {
+      machine.status = oldStatus;
       alert(error.error);
     })
   }
@@ -112,6 +118,11 @@ export class MachinesComponent implements OnInit {
       alert(error.error);
     })
 
+  }
+
+  schedule(machine: Machine){
+    localStorage.setItem('machine', JSON.stringify(machine));
+    this.router.navigate(['/schedule'])
   }
 
 }

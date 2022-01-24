@@ -35,6 +35,7 @@
       <th *ngIf="loggedInUser.can_restart_machines" scope="col">Stop</th>
       <th *ngIf="loggedInUser.can_stop_machines" scope="col">Restart</th>
       <th *ngIf="loggedInUser.can_destroy_machines" scope="col">Destroy</th>
+      <th *ngIf="loggedInUser.can_start_machines || loggedInUser.can_restart_machines || loggedInUser.can_stop_machines" scope="col">Schedule</th>
     </tr>
     </thead>
     <tbody>
@@ -70,6 +71,11 @@
       <td *ngIf="loggedInUser.can_destroy_machines">
         <button class="btn btn-outline-danger" (click)="destroy(machine)">Destroy</button>
       </td>
+
+      <td *ngIf="loggedInUser.can_start_machines || loggedInUser.can_restart_machines || loggedInUser.can_stop_machines">
+        <button class="btn btn-outline-primary" (click)="schedule(machine)">Schedule</button>
+      </td>
+
     </tr>
     </tbody>
   </table>

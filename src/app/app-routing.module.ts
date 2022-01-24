@@ -13,6 +13,7 @@ import {ErrorsComponent} from "./errors/errors.component";
 import {MachinesGuardGuard} from "./machines-guard.guard";
 import {NewMachineComponent} from "./new-machine/new-machine.component";
 import {CreateMachineGuard} from "./create-machine.guard";
+import {ScheduleGuard} from "./schedule.guard";
 
 const appRoutes: Routes = [
   { path: '', redirectTo: 'login', pathMatch: 'full'},
@@ -23,6 +24,7 @@ const appRoutes: Routes = [
   { path: 'machines', component: MachinesComponent,canActivate: [AuthGuard, MachinesGuardGuard] },
   { path: 'errors', component: ErrorsComponent,canActivate: [AuthGuard, MachinesGuardGuard] },
   { path: 'createMachine', component: NewMachineComponent,canActivate: [AuthGuard, CreateMachineGuard] },
+  { path: 'schedule', component: ScheduleComponent,canActivate: [AuthGuard, ScheduleGuard] },
   { path: '**', redirectTo: 'login'}
 ];
 

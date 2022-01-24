@@ -1,4 +1,6 @@
 import { Component, OnInit } from '@angular/core';
+import {BackendService} from "../backend.service";
+import {Error} from "../models/Error";
 
 @Component({
   selector: 'app-errors',
@@ -7,9 +9,14 @@ import { Component, OnInit } from '@angular/core';
 })
 export class ErrorsComponent implements OnInit {
 
-  constructor() { }
+  errors: Error[] = [];
+
+  constructor(private backend: BackendService) { }
 
   ngOnInit(): void {
+    this.backend.errors().subscribe( (response) =>{
+      this.errors = response;
+    })
   }
 
 }

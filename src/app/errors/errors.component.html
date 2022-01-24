@@ -1,1 +1,33 @@
-<p>errors works!</p>
+<div class="container">
+  <div class="center overflow-auto" style="height: 60%; top: 50%">
+    <table class="table">
+      <thead>
+      <tr>
+        <th scope="col">Name</th>
+        <th scope="col">Operation</th>
+        <th scope="col">Message</th>
+        <th scope="col">Date</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr *ngFor="let error of errors;">
+        <td>
+          {{ error.machine.name }}
+        </td>
+
+        <td>
+          {{ error.operation }}
+        </td>
+
+        <td>
+          {{ error.message }}
+        </td>
+
+        <td>
+          {{ error.date }}
+        </td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
