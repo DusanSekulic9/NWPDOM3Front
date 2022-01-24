@@ -1,0 +1,87 @@
+<div class="container center">
+
+  <form [formGroup]="formGroup">
+    <div class="row">
+      <div class="col-sm-3">
+        <input type="text" class="form-control" placeholder="Name" [formControlName]="'name'">
+      </div>
+      <div class="col-sm-1">
+        <label for="status" ></label>
+
+        <select id="status" class="" [formControlName]="'status'">
+          <option value=""></option>
+          <option value="RUNNING">RUNNING</option>
+          <option value="STOPPED">STOPPED</option>
+        </select>
+      </div>
+      <div class="col-sm-2">
+        <input type="date" class="form-control" [formControlName]="'dateFrom'">
+      </div>
+      <div class="col-sm-2">
+        <input type="date" class="form-control" [formControlName]="'dateTo'">
+      </div>
+      <div class="col-sm-2">
+        <button class="btn btn-primary" (click)="search()">Search</button>
+      </div>
+    </div>
+  </form>
+
+  <table *ngIf="loggedInUser.can_search_machines" class="table">
+    <thead>
+    <tr>
+      <th scope="col">Name</th>
+      <th scope="col">Status</th>
+      <th *ngIf="loggedInUser.can_start_machines" scope="col">Start</th>
+      <th *ngIf="loggedInUser.can_restart_machines" scope="col">Stop</th>
+      <th *ngIf="loggedInUser.can_stop_machines" scope="col">Restart</th>
+      <th *ngIf="loggedInUser.can_destroy_machines" scope="col">Destroy</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr *ngFor="let machine of machines;">
+      <td>
+        {{ machine.name }}
+      </td>
+
+      <td *ngIf="machine.status == 'RUNNING'" style="color: forestgreen">
+        {{ machine.status }}
+      </td>
+
+      <td *ngIf="machine.status == 'STOPPED'" style="color: red">
+        {{ machine.status }}
+      </td>
+
+      <td *ngIf="machine.status == 'WORKING...'" style="color: gray">
+        {{ machine.status }}
+      </td>
+
+      <td *ngIf="loggedInUser.can_start_machines">
+        <button class="btn btn-success" (click)="start(machine)">Start</button>
+      </td>
+
+      <td *ngIf="loggedInUser.can_stop_machines">
+        <button class="btn btn-danger" (click)="stop(machine)">Stop</button>
+      </td>
+
+      <td *ngIf="loggedInUser.can_restart_machines">
+        <button class="btn btn-warning" (click)="restart(machine)">Restart</button>
+      </td>
+
+      <td *ngIf="loggedInUser.can_destroy_machines">
+        <button class="btn btn-outline-danger" (click)="destroy(machine)">Destroy</button>
+      </td>
+    </tr>
+    </tbody>
+  </table>
+  <div class="row">
+    <div class="col-2"></div>
+    <button *ngIf="loggedInUser.can_create_machines" class="btn btn-primary btn-lg col-2" (click)="createMachine()">Add
+      new machine
+    </button>
+    <div class="col-4"></div>
+    <button class="col-2 btn btn-danger btn-lg" (click)="logout()">Log Out</button>
+    <div class="col-2"></div>
+  </div>
+
+</div>
+
