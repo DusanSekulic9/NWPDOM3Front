@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container center">
   <table *ngIf="loggedInUser.can_read_users" class="table">
     <thead>
     <tr>
@@ -9,6 +9,12 @@
       <th scope="col">Read</th>
       <th scope="col">Update</th>
       <th scope="col">Delete</th>
+      <th scope="col">CM</th>
+      <th scope="col">DM</th>
+      <th scope="col">SM</th>
+      <th scope="col">Start</th>
+      <th scope="col">Restart</th>
+      <th scope="col">Stop</th>
       <th *ngIf="loggedInUser.can_delete_users" scope="col">Action</th>
     </tr>
     </thead>
@@ -43,6 +49,31 @@
         {{user.can_delete_users}}
       </td>
 
+
+
+      <td>
+        {{user.can_create_machines}}
+      </td>
+
+      <td>
+        {{user.can_destroy_machines}}
+      </td>
+
+      <td>
+        {{user.can_search_machines}}
+      </td>
+
+      <td>
+        {{user.can_start_machines}}
+      </td>
+
+      <td>
+        {{user.can_restart_machines}}
+      </td>
+
+      <td>
+        {{user.can_stop_machines}}
+      </td>
       <td *ngIf="loggedInUser.can_delete_users">
         <button class="btn btn-outline-danger" (click)="delete(user.id)">Delete</button>
       </td>

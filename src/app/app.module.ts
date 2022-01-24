@@ -11,6 +11,11 @@ import { LoginComponent } from './login/login.component';
 import { HomeComponent } from './home/home.component';
 import { UserComponent } from './user/user.component';
 import { EditUserComponent } from './edit-user/edit-user.component';
+import { HeaderComponent } from './header/header.component';
+import { MachinesComponent } from './machines/machines.component';
+import { ScheduleComponent } from './schedule/schedule.component';
+import { ErrorsComponent } from './errors/errors.component';
+import { NewMachineComponent } from './new-machine/new-machine.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +23,12 @@ import { EditUserComponent } from './edit-user/edit-user.component';
     LoginComponent,
     HomeComponent,
     UserComponent,
-    EditUserComponent
+    EditUserComponent,
+    HeaderComponent,
+    MachinesComponent,
+    ScheduleComponent,
+    ErrorsComponent,
+    NewMachineComponent
   ],
   imports: [
     BrowserModule,

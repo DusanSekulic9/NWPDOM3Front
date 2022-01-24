@@ -22,6 +22,12 @@ export class UserComponent implements OnInit {
       create: [false],
       update: [false],
       delete: [false],
+      create_m: [false],
+      destroy_m: [false],
+      search_m: [false],
+      start_m: [false],
+      restart_m: [false],
+      stop_m: [false],
     })
 
   }
@@ -38,7 +44,13 @@ export class UserComponent implements OnInit {
     let create = this.userGroup.get('create')?.value;
     let update = this.userGroup.get('update')?.value;
     let del = this.userGroup.get('delete')?.value;
-    this.http.create(username, password, name, surname, create,read,update,del).subscribe((response) =>{
+    let create_m = this.userGroup.get('create_m')?.value;
+    let destroy_m = this.userGroup.get('destroy_m')?.value;
+    let search_m = this.userGroup.get('search_m')?.value;
+    let start_m = this.userGroup.get('start_m')?.value;
+    let restart_m = this.userGroup.get('restart_m')?.value;
+    let stop_m = this.userGroup.get('stop_m')?.value;
+    this.http.create(username, password, name, surname, create,read,update,del, create_m, destroy_m,search_m,start_m,restart_m,stop_m).subscribe((response) =>{
       this.router.navigate(['/home'])
     })
   }

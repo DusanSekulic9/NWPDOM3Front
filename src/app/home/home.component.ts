@@ -19,7 +19,11 @@ export class HomeComponent implements OnInit {
     this.backend.getAllUsers().subscribe((response) =>{
       this.users = response.body || [];
     }, error => {
-      alert('You don\'t have permission to read users');
+      if(!this.loggedInUser.can_read_users && !this.loggedInUser.can_create_users){
+        alert('You don\'t have any permissions');
+      }else{
+        alert('You don\'t have permission to read users');
+      }
     })
   }
 
